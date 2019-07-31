@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+		<meta charset="utf-8" ></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
+		<title>在线垃圾分类查询</title>
+		<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"></link>
+
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<script src="/js/morsezp.js" type="text/javascript" ></script>
+</head>
+
+	<body style="padding-top: 6%;">
+			
+		<div class="container">
+			<div class="row">
+					<div style="text-align: center;">
+				<div class="page-header">
+  				<h1 > <small style="font-size: 33px;"><span id="rubbishname" style="color:seagreen "></span><span id="shuyv" style=" "></span></small></h1>
+					<h1><span id="rubbishclass" style="color:dodgerblue "></span></h1>
+				</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3">
+					<div class="input-group input-group-ms">
+						<input type="text" class="form-control" placeholder="输入你要查询的垃圾..." id="name"></input>
+						<span class="input-group-btn">
+       						 <button class="btn  btn-success" type="button" id="search">你是什么垃圾</button>
+      					</span>
+
+					</div>
+					<!-- /input-group -->
+				</div>
+				<!-- /.col-lg-6 -->
+			</div>
+			<!-- /.row -->
+
+			<div class="row" style="margin-top: 6%;">
+				<div class="col-lg-6">
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">干垃圾</h3>
+						</div>
+						<div class="panel-body">
+							<font color='darkgoldenrod'>
+								干垃圾即其它垃圾，包括砖瓦陶瓷、渣土、
+							卫生间废纸、瓷器碎片等难以回收的废弃物，
+							采取卫生填埋可有效减少对地下水、地表水、
+							土壤及空气的污染，在当今社会，还无有效化解其他垃圾的好方法，所以需尽量少产生。
+								
+							</font>
+							
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="panel panel-info">
+
+						<div class="panel-heading">
+							<h3 class="panel-title">湿垃圾</h3>
+						</div>
+						<div class="panel-body">
+							<font color='cornflowerblue'>
+							湿垃圾又称为厨余垃圾、有机垃圾，即易腐垃圾，
+							是指日常生活垃圾中可分解的有机物质部分。
+							有机垃圾包括食物残渣、菜根、菜叶，动物蹄、角、瓜皮、
+							果屑、蛋壳、鱼鳞、毛发、植物枝干、树叶、杂草、动物尸体、
+							牲畜粪便等。有机垃圾应由专人负责收 集，收集容器必须密封、
+							有盖、防渗漏、防蝇、防鼠。
+							</font>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="panel panel-success">
+
+						<div class="panel-heading">
+							<h3 class="panel-title">可回收垃圾</h3>
+						</div>
+						<div class="panel-body">
+							<font color='darkgreen'>
+							可回收物就是可以再生循环的垃圾。
+							本身或材质可再利用的纸类、硬纸板、
+							玻璃、塑料、金属、塑料包装，与这些材质有关的
+							如：报纸、杂志、广告单及其它干净的纸类等皆可回收。
+							</font>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="panel panel-danger">
+
+						<div class="panel-heading">
+							<h3 class="panel-title">有害垃圾</h3>
+						</div>
+						<div class="panel-body">
+							<font color="red">
+							有害垃圾指废电池、废灯管、废药品、废油漆及其容器等对
+							人体健康或者自然环境造成直接或者潜在危害的生活废弃物。
+							常见包括废电池、废荧光灯管、废灯泡、废水银温度计、
+							废油漆桶、过期药品等。有害有毒垃圾需特殊正确的方法安全处理。
+							</font>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+<script>
+	//<![CDATA[
+	$(function(){
+		$("#search").click(function(){
+			var name=$("#name").val();
+			//alert(name);
+			if(name!=null&&name.trim().length>0){
+				//alert(name);
+				$.get("/rubbish/"+name,function(data){
+					if(data.status==1){
+						$("#rubbishname").text(data.rubbishName);
+						$("#shuyv").text("属于：");
+						var value=morseZpDecode(data.rubbishClass);
+						if(value==1){
+							value="干垃圾"
+						}else if (value==2){
+							value="湿垃圾";
+						}else if(value==3){
+							value="可回收垃圾";
+						}else  if (value==4){
+							value="有害垃圾";
+						}else {
+							value="未知垃圾，已反馈等待更新！！！";
+						}
+						$("#rubbishclass").text(value);
+					}else{
+						$("#rubbishname").text("");
+						$("#rubbishclass").text("服务器繁忙，请稍后再试");
+					}
+					
+				},"json");
+			
+				
+			}
+			
+		});
+		
+		
+	});
+
+//	]]>
+</script>
+</html>

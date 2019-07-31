@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="rubbish_classification_web" />
+        <module name="rubbish_classification_eureka03" />
+        <module name="rubbish_classification_eureka02" />
+        <module name="rubbish_classification_eureka01" />
+        <module name="rubbish_classification_server02" />
+        <module name="rubbish_classification_server01" />
+        <module name="rubbish_classification_api" />
+        <module name="rubbish_classification_gateway" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="rubbish_classification_consumer" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

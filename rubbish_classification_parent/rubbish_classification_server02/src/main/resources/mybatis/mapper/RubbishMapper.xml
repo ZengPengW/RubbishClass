@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zp.rubbish.mapper.RubbishMapper">
+
+
+<select id="selectRubbileByName" parameterType="string" resultType="rubbish">
+SELECT r.`id`,r.`rubbish_name`,c.`rubbish_class`
+FROM `rubbish` r, `rubbish_class` c
+WHERE r.`rubbish_name`=#{name} AND c.`id`=r.`rubbish_class`
+</select>
+
+<insert id="save" parameterType="tbrubbish">
+    insert into `rubbish`(`id`,`rubbish_name`,`rubbish_class`)
+    values(null,#{rubbishName},#{rubbishClass})
+</insert>
+
+
+
+
+
+</mapper>

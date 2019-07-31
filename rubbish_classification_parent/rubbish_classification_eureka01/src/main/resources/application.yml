@@ -1,0 +1,34 @@
+server:
+  port: 7001
+
+eureka:
+  instance:
+    hostname: eureka01  #eureka 服务端的实例名称
+  client:
+    register-with-eureka: false #false表示不向注册中心注册自己
+    fetch-registry: false #false表示自己端就是注册中心，不需要检索服务
+    service-url:
+      #defaultZone: http://localhost:${server.port}/eureka/  #设置与Eureka Server 交互的地址查询服务和注册服务
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/ #集群版
+# server:
+#    enable-self-preservation: false   #关闭自我保护机制 不推荐关闭
+
+#ribbon:
+#  ReadTimeout: 60000
+#  # 请求连接超时时间
+#  ConnectTimeout: 60000
+## 断路器超时时间
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 60000
+spring:
+  jmx:
+    default-domain: eureka01
+
+endpoints:
+  jmx:
+    domain: eureka01

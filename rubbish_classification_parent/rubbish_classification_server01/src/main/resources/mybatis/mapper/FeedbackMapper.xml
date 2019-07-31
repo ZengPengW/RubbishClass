@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zp.rubbish.mapper.FeedbackMapper">
+
+<select id="selectFeedbackByName" parameterType="string" resultType="tbfeedback">
+    select * from `feedback` where `rubbish_name`=#{name}
+</select>
+
+<insert id="saveFeedback" parameterType="string">
+    insert  into `feedback`(`rubbish_name`) values (#{name})
+</insert>
+
+
+</mapper>
