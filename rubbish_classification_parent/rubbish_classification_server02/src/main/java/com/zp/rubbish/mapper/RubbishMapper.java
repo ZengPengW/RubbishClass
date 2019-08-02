@@ -4,6 +4,8 @@ import com.zp.rubbish.entities.Rubbish;
 import com.zp.rubbish.entities.TbRubbish;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface RubbishMapper {
     /**
@@ -20,8 +22,8 @@ public interface RubbishMapper {
     public void save(TbRubbish tbRubbish);
 
     /**
-     * 反馈垃圾名字
-     * @param name
+     * 查询所有垃圾
+     * @return
      */
-    public void saveFeedback(String name);
+    public List<TbRubbish> selectAll();
 }

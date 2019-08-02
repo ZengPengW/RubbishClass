@@ -16,7 +16,10 @@ WHERE r.`rubbish_name`=#{name} AND c.`id`=r.`rubbish_class`
     values(null,#{rubbishName},#{rubbishClass})
 </insert>
 
-
+<select id="selectAll" resultType="tbrubbish" >
+SELECT *
+FROM `rubbish`
+</select>
 
 
 

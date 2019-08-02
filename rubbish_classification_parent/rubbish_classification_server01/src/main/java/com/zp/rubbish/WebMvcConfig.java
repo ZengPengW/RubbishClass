@@ -23,4 +23,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         converters.add(fastJsonConverter);
 
     }
+
+
 }

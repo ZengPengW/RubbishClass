@@ -1,0 +1,14 @@
+<div style="text-align: center;">
+<h1><span th:text="${rubbishName}+'属于:'"></span></h1>
+<form method="post" action="/saveRubbish" name="form1" id="form1">
+	<input type="hidden" name="rubbishName" th:value="${rubbishName}"></input>
+	<select name="rubbishClass" id="rubbishClass">
+		<option>--请选择--</option>
+		<option value="1">有害垃圾</option>
+		<option value="2">湿垃圾</option>
+		<option value="3">干垃圾</option>
+		<option value="4">可回收垃圾</option>
+		<option value="5">非垃圾</option>
+	</select>
+</form>
+</div>

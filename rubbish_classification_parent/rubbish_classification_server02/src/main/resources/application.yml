@@ -15,7 +15,7 @@ spring:
       url: jdbc:mysql://localhost:3306/rubbish?useSSL=false
       #platform: mysql
       username: root
-      password: 147258
+      password: 123456
       driver-class-name: com.mysql.jdbc.Driver #或者org.gjt.mm.mysql.Driver   
       #druid连接池配置
       initialSize: 5 #初始化个数

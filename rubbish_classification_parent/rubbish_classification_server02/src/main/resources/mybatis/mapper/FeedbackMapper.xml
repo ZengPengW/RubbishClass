@@ -12,5 +12,12 @@
     insert  into `feedback`(`rubbish_name`) values (#{name})
 </insert>
 
+<select id="selectAll" resultType="tbfeedback">
+    select * from `feedback`
+</select>
+
+<delete id="deleteFeedbackByName" parameterType="string">
+    delete from `feedback` where `rubbish_name`=#{name}
+</delete>
 
 </mapper>

@@ -1,0 +1,90 @@
+<table class="easyui-datagrid" id="feebackList" title="反馈列表" 
+       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/feedback/list',method:'get',pageSize:30,toolbar:toolbar">
+    <thead>
+        <tr>
+        	<th data-options="field:'ck',checkbox:true"></th>
+        	<th data-options="field:'rubbishName',width:60">垃圾名称</th>
+            <th data-options="field:'rubbishClass',width:200">类别</th>
+        </tr>
+    </thead>
+</table>
+
+<div id="ReceiveFeedBackDialog" class="easyui-dialog" closed="true" buttons="#dlg-buttons" title="编辑" style="width:500px;height:350px;">
+     <iframe scrolling="auto" id='openReceiveFeedBack' name="openReceiveFeedBack" frameborder="0"  src="" style="width:100%;height:98%;"></iframe>
+</div> 
+    <div id="dlg-buttons">
+        <a href="#" class="easyui-linkbutton" onclick="formSubmit();">Save</a> <a href="#"
+            class="easyui-linkbutton" onclick="closeDialog();">Close</a>
+    </div>
+
+<script>
+	var aaa=2;
+function openDialog(id) {
+    $('#openReceiveFeedBack')[0].src = '/' + id;
+    $('#ReceiveFeedBackDialog').dialog('open');
+}
+ function closeDialog() {
+    $('#ReceiveFeedBackDialog').dialog('close');
+     $("#feebackList").datagrid("reload");
+} 
+ function formSubmit() {
+        frames["openReceiveFeedBack"].document.forms["form1"].submit();
+}  
+
+
+  
+function getSelectionsIds(){
+    	var feebackList = $("#feebackList");
+    	var sels = feebackList.datagrid("getSelections");
+    	var ids = [];
+    	for(var i in sels){
+    		ids.push(sels[i].rubbishName);
+    	}
+    	ids = ids.join(",");
+    	return ids;
+    }
+    
+    var toolbar = [{
+        text:'编辑',
+        iconCls:'icon-edit',
+        handler:function(){
+
+        	var ids = getSelectionsIds();
+        	if(ids.length == 0){
+        		$.messager.alert('提示','必须选择一个商品才能编辑!');
+        		return ;
+        	}
+        	if(ids.indexOf(',') > 0){
+        		$.messager.alert('提示','只能选择一个商品!');
+        		return ;
+        	}
+        	//alert(ids);
+            openDialog("feedbackEdit?rubbishName="+ids);
+        	
+      
+        }
+    },{
+        text:'删除',
+        iconCls:'icon-cancel',
+        handler:function(){
+        	var ids = getSelectionsIds();
+        	if(ids.length == 0){
+        		$.messager.alert('提示','未选中商品!');
+        		return ;
+        	}
+        	$.messager.confirm('确认','确定删除ID为 '+ids+' 的反馈吗？',function(r){
+        	     if (r){
+        	         alert("此功能没必要");
+        	    // 	var params = {"ids":ids};
+                // 	$.post("/rest/item/delete",params, function(data){
+            	// 		if(data.status == 200){
+            	// 			$.messager.alert('提示','删除商品成功!',undefined,function(){
+            	// 				$("#itemList").datagrid("reload");
+            	// 			});
+            	// 		}
+            	// 	});
+        	     }
+        	});
+        }
+    },'-'];
+</script>

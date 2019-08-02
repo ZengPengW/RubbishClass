@@ -1,5 +1,7 @@
 package com.zp.rubbish.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zp.rubbish.entities.Rubbish;
 import com.zp.rubbish.entities.TbFeedback;
 import com.zp.rubbish.entities.TbRubbish;
@@ -7,10 +9,13 @@ import com.zp.rubbish.mapper.FeedbackMapper;
 import com.zp.rubbish.mapper.RubbishMapper;
 import com.zp.rubbish.service.RubbishClassService;
 import com.zp.rubbish.utils.APIService;
+import com.zp.rubbish.utils.EasyUIDataGridResult;
 import com.zp.rubbish.utils.HttpResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -88,6 +93,26 @@ public class RubbishClassServiceImpl implements RubbishClassService {
         }
 
         return rubbish;
+    }
+
+    @Override
+    public void saveRbuuish(TbRubbish tbRubbish) {
+        rubbishMapper.save(tbRubbish);
+    }
+
+    @Override
+    public EasyUIDataGridResult<TbRubbish> selectAll(Integer page, Integer rows) {
+        if (page == null)
+            page = 1;
+        if (rows == null)
+            rows = 30;
+        PageHelper.startPage(page, rows);
+        List<TbRubbish> list = rubbishMapper.selectAll();
+        PageInfo<TbRubbish> pageInfo = new PageInfo<TbRubbish>(list);
+        EasyUIDataGridResult<TbRubbish> dataGridResult = new EasyUIDataGridResult<>();
+        dataGridResult.setRows(list);
+        dataGridResult.setTotal(pageInfo.getTotal());
+        return dataGridResult;
     }
 
     // KPM子字符串查找算法

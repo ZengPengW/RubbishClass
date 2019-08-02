@@ -2,14 +2,19 @@ package com.zp.rubbish.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+
+import java.nio.charset.StandardCharsets;
 
 @Configuration
 public class RubbbonConfig {
     @Bean
    // @LoadBalanced //负载均衡 默认轮询
     public RestTemplate geRestTemplate(){
-        return new RestTemplate();
+        RestTemplate restTemplate= new RestTemplate();
+        restTemplate.getMessageConverters().set(1,new StringHttpMessageConverter(StandardCharsets.UTF_8));
+        return  restTemplate;
     }
 
 //    @Bean //存在显示声明就用声明的策略，此处是随机策略

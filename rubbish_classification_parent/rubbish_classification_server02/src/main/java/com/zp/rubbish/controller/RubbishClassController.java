@@ -2,7 +2,9 @@ package com.zp.rubbish.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.zp.rubbish.entities.Rubbish;
+import com.zp.rubbish.entities.TbRubbish;
 import com.zp.rubbish.service.RubbishClassService;
+import com.zp.rubbish.utils.EasyUIDataGridResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RubbishClassController {
     @Autowired
     private RubbishClassService rubbishClassService;
+
 
     @GetMapping("/rubbish/{name}")
     @HystrixCommand(fallbackMethod = "getRubbishClassError")
@@ -30,6 +33,14 @@ public class RubbishClassController {
         }
         return rubbish;
     }
+
+    @GetMapping("/rubbish/list")
+    public EasyUIDataGridResult<TbRubbish> getRubbishList(Integer page, Integer rows){
+        return  rubbishClassService.selectAll(page,rows);
+    }
+
+
+
 
     public  Rubbish getRubbishClassError(@PathVariable("name") String name){
         Rubbish rubbish=new Rubbish();
