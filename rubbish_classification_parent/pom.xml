@@ -36,7 +36,7 @@
 <!--        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>-->
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <spring-cloud.version>Dalston.SR1</spring-cloud.version>
-        <mysql-connector.version>5.1.47</mysql-connector.version>
+        <mysql-connector.version>8.0.16</mysql-connector.version>
         <mybatis-starter.version>2.1.0</mybatis-starter.version>
         <logback.version>1.2.3</logback.version>
         <spring-boot-mapper.version>2.1.5</spring-boot-mapper.version>
